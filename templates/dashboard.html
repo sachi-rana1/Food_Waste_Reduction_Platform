@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<h1>Food Donations</h1>
+
+<a href="/donate">
+    <button>Add Donation</button>
+</a>
+
+<a href="/logout">
+    <button>Logout</button>
+</a>
+
+<hr>
+
+{% for d in donations %}
+
+<h3>{{ d.food_name }}</h3>
+
+<p>Quantity: {{ d.quantity }}</p>
+<p>Type: {{ d.food_type }}</p>
+<p>Location: {{ d.location }}</p>
+<p>Contact: {{ d.contact }}</p>
+<p>Status: {{ d.status }}</p>
+<a href="/delete/{{ d.id }}">
+    <button>Delete</button>
+</a>
+<hr>
+
+{% endfor %}
+
+</body>
+</html>
