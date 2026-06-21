@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Restaurant Dashboard</title>
+    <title>NGO Dashboard</title>
     <link rel="stylesheet"
           href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 
-<h1>Restaurant Dashboard</h1>
+<h1>NGO Dashboard</h1>
 
 <h3>Welcome {{ user_name }}</h3>
-
-<a href="/donate">
-    <button>Add Donation</button>
-</a>
 
 <a href="/logout">
     <button>Logout</button>
@@ -21,7 +17,7 @@
 
 <hr>
 
-<h2>My Donations</h2>
+<h2>Available Donations</h2>
 
 {% for d in donations %}
 
@@ -33,10 +29,11 @@
     <p>Type: {{ d.food_type }}</p>
     <p>Location: {{ d.location }}</p>
     <p>Contact: {{ d.contact }}</p>
-    <p>Status: {{ d.status }}</p>
 
-    <a href="/delete/{{ d.id }}">
-        <button>Delete</button>
+    <a href="/accept/{{ d.id }}">
+        <button>
+            Accept Donation
+        </button>
     </a>
 
 </div>

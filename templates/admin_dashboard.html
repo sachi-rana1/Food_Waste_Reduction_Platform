@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<h1>Admin Dashboard</h1>
+
+<h3>Welcome {{ user_name }}</h3>
+
+<a href="/logout">
+    <button>Logout</button>
+</a>
+
+<hr>
+
+<h2>Restaurants</h2>
+
+{% for r in restaurants %}
+<div class="card">
+    <p>{{ r.name }}</p>
+    <p>{{ r.email }}</p>
+</div>
+{% endfor %}
+
+<hr>
+
+<h2>NGOs</h2>
+
+{% for n in ngos %}
+<div class="card">
+    <p>{{ n.name }}</p>
+    <p>{{ n.email }}</p>
+</div>
+{% endfor %}
+
+<hr>
+
+<h2>Delivery Partners</h2>
+
+{% for p in partners %}
+<div class="card">
+    <p>{{ p.name }}</p>
+    <p>{{ p.email }}</p>
+
+    {% if p.available %}
+        <p>Available</p>
+    {% else %}
+        <p>Busy</p>
+    {% endif %}
+
+</div>
+{% endfor %}
+
+<hr>
+
+<h2>All Donations</h2>
+
+{% for d in donations %}
+<div class="card">
+
+    <h3>{{ d.food_name }}</h3>
+
+    <p>Quantity : {{ d.quantity }}</p>
+    <p>Location : {{ d.location }}</p>
+    <p>Status : {{ d.status }}</p>
+
+</div>
+{% endfor %}
+
+<hr>
+
+<h2>All Deliveries</h2>
+
+{% for d in deliveries %}
+<div class="card">
+
+    <p>Delivery ID : {{ d.id }}</p>
+    <p>Status : {{ d.status }}</p>
+
+</div>
+{% endfor %}
+
+</body>
+</html>

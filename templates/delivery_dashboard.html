@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delivery Dashboard</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<h1>Delivery Dashboard</h1>
+
+<h3>Welcome {{ user_name }}</h3>
+
+<a href="/logout">
+    <button>Logout</button>
+</a>
+
+<hr>
+
+<h2>Assigned Deliveries</h2>
+
+{% for d in deliveries %}
+
+<div class="card">
+
+    <h3>Delivery ID : {{ d.id }}</h3>
+
+    <p>Status : {{ d.status }}</p>
+
+    {% if d.status != "Delivered" %}
+
+    <a href="/delivered/{{ d.id }}">
+        <button>
+            Mark Delivered
+        </button>
+    </a>
+
+    {% endif %}
+
+</div>
+
+{% endfor %}
+
+</body>
+</html>
